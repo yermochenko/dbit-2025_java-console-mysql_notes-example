@@ -12,6 +12,7 @@ public class NoteRepository implements AutoCloseable {
 	public static final String SELECT_ONE_SQL = "SELECT id, title, date, done FROM note WHERE id = ?";
 	public static final String INSERT_SQL = "INSERT INTO note (title, date, done) VALUES (?, ?, FALSE)";
 	public static final String UPDATE_SQL = "UPDATE note SET title = ?, date = ?, done = ? WHERE id = ?";
+	public static final String DELETE_SQL = "DELETE FROM note WHERE id = ?";
 
 	private final Connection connection;
 
@@ -84,6 +85,17 @@ public class NoteRepository implements AutoCloseable {
 			statement.setDate(2, new java.sql.Date(note.getDate().getTime()));
 			statement.setBoolean(3, note.isDone());
 			statement.setInt(4, note.getId());
+			statement.executeUpdate();
+		} finally {
+			try { if(statement != null) { statement.close(); } } catch (SQLException ignored) {}
+		}
+	}
+
+	public void delete(Integer id) throws SQLException {
+		PreparedStatement statement = null;
+		try {
+			statement = connection.prepareStatement(DELETE_SQL);
+			statement.setInt(1, id);
 			statement.executeUpdate();
 		} finally {
 			try { if(statement != null) { statement.close(); } } catch (SQLException ignored) {}

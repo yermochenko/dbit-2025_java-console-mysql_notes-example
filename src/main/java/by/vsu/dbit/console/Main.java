@@ -1,9 +1,6 @@
 package by.vsu.dbit.console;
 
-import by.vsu.dbit.console.menu.AddMenuItem;
-import by.vsu.dbit.console.menu.EditMenuItem;
-import by.vsu.dbit.console.menu.ExitMenuItem;
-import by.vsu.dbit.console.menu.ShowAllMenuItem;
+import by.vsu.dbit.console.menu.*;
 import by.vsu.dbit.repository.MySqlConnector;
 import by.vsu.dbit.repository.NoteRepository;
 
@@ -19,6 +16,7 @@ public class Main {
 				new ShowAllMenuItem(noteRepository),
 				new AddMenuItem(noteRepository),
 				new EditMenuItem(noteRepository),
+				new DeleteMenuItem(noteRepository),
 				new ExitMenuItem(noteRepository)
 			);
 			boolean work = true;

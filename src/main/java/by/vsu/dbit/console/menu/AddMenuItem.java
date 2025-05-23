@@ -39,6 +39,7 @@ public class AddMenuItem extends MenuItem {
 			}
 		}
 		getNoteRepository().create(note);
+		System.out.println("Note added");
 		return true;
 	}
 }

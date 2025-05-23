@@ -61,6 +61,7 @@ public class EditMenuItem extends MenuItem {
 				note.setDone(Boolean.parseBoolean(done));
 			}
 			getNoteRepository().update(note);
+			System.out.println("Note updated");
 		} else {
 			System.out.println("Note not found");
 		}
