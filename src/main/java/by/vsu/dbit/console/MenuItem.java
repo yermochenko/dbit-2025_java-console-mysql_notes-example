@@ -2,6 +2,7 @@ package by.vsu.dbit.console;
 
 import by.vsu.dbit.repository.NoteRepository;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 abstract public class MenuItem {
@@ -18,7 +19,7 @@ abstract public class MenuItem {
 	 * Perform an action for menu item
 	 * @return <code>false</code> if after this action program should be stopped
 	 */
-	abstract public boolean execute();
+	abstract public boolean execute() throws SQLException;
 
 	public String getName() {
 		return name;

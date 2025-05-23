@@ -13,21 +13,16 @@ public class ShowAllMenuItem extends MenuItem {
 	}
 
 	@Override
-	public boolean execute() {
-		try {
-			List<Note> notes = getNoteRepository().readAll();
-			if(!notes.isEmpty()) {
-				System.out.println("*** LIST OF NOTES: ***");
-				for(Note note : notes) {
-					System.out.printf("[%1$c] %2$02d: %3$td.%3$tm.%3$tY, %4$s\n", note.isDone() ? 'v' : ' ', note.getId(), note.getDate(), note.getTitle());
-				}
-			} else {
-				System.out.println("There are no any notes");
+	public boolean execute() throws SQLException {
+		List<Note> notes = getNoteRepository().readAll();
+		if(!notes.isEmpty()) {
+			System.out.println("*** LIST OF NOTES: ***");
+			for(Note note : notes) {
+				System.out.printf("[%1$c] %2$02d: %3$td.%3$tm.%3$tY, %4$s\n", note.isDone() ? 'v' : ' ', note.getId(), note.getDate(), note.getTitle());
 			}
-			return true;
-		} catch(SQLException e) {
-			System.out.println("Error reading notes from database");
-			return false;
+		} else {
+			System.out.println("There are no any notes");
 		}
+		return true;
 	}
 }
