@@ -1,6 +1,7 @@
 package by.vsu.dbit.console;
 
 import by.vsu.dbit.console.menu.AddMenuItem;
+import by.vsu.dbit.console.menu.EditMenuItem;
 import by.vsu.dbit.console.menu.ExitMenuItem;
 import by.vsu.dbit.console.menu.ShowAllMenuItem;
 import by.vsu.dbit.repository.MySqlConnector;
@@ -17,6 +18,7 @@ public class Main {
 			List<MenuItem> menu = List.of(
 				new ShowAllMenuItem(noteRepository),
 				new AddMenuItem(noteRepository),
+				new EditMenuItem(noteRepository),
 				new ExitMenuItem(noteRepository)
 			);
 			boolean work = true;
